@@ -1,5 +1,11 @@
+import { StaticImageData } from "next/image";
+
 type Emotion = "Happy" | "Sad" | "Angry";
 
-type Speech = "Dialogue" | "Monologue";
+type SpeechType = "Dialogue" | "Monologue";
 
-interface Lesson {}
+export interface LessonType {
+  image: StaticImageData;
+  title: string;
+  speechType: string;
+}

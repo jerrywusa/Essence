@@ -1,20 +1,25 @@
-import logo from "./wows ss.jpeg";
-import Image from "next/image";
+import { FunctionComponent } from "react";
 import vectorSvg from "./Vector.svg";
+import Image, { StaticImageData } from "next/image";
 
-function Lesson() {
-  const imageStyle = {
-    borderRadius: 10,
-    width: 444,
-    height: 340.36,
-    objectFit: "cover",
-  };
+interface LessonProps {
+  image: StaticImageData;
+  title: string;
+  speechType: string;
+}
 
-  const titleStyle = {
-    width: 284,
-    height: 39,
-  };
+const imageStyle = {
+  borderRadius: 10,
+  width: 444,
+  height: 340.36,
+  objectFit: "cover",
+};
 
+const Lesson: FunctionComponent<LessonProps> = ({
+  image,
+  title,
+  speechType,
+}) => {
   return (
     <div
       style={{
@@ -23,7 +28,7 @@ function Lesson() {
         height: "340.36px",
       }}
     >
-      <Image src={logo} alt="image description" style={imageStyle} />
+      <Image src={image} alt="image description" style={imageStyle} />
       <div
         style={{
           position: "absolute",
@@ -47,7 +52,7 @@ function Lesson() {
           fontFamily: "Arial, sans-serif",
         }}
       >
-        The Wolf of Wall Street
+        {title}
       </p>
       <p
         style={{
@@ -61,11 +66,11 @@ function Lesson() {
           opacity: ".75",
         }}
       >
-        Monologue
+        {speechType}
       </p>
       <Image
         src={vectorSvg}
-        alt="vector svg iconA"
+        alt="vector svg icon"
         style={{
           position: "absolute",
           top: "293px",
@@ -76,6 +81,6 @@ function Lesson() {
       />
     </div>
   );
-}
+};
 
 export default Lesson;
