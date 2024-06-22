@@ -1,5 +1,11 @@
+import Lesson from "./lesson";
+
 function Home() {
-  return <div>home page</div>;
+  return (
+    <div>
+      <Lesson />
+    </div>
+  );
 }
 
 export default Home;
