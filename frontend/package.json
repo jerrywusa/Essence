@@ -28,6 +28,10 @@
     "eslint": "^8",
     "eslint-config-next": "14.2.4",
     "postcss": "^8",
+    "prop-types": "^15.8.1",
+    "react-video-recorder": "^3.19.4",
+    "recordrtc": "^5.6.2",
+    "styled-components": "^6.1.11",
     "tailwindcss": "^3.4.1",
     "typescript": "^5"
   }
