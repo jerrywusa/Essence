@@ -14,24 +14,23 @@ const VideoRecorder = () => {
     if (typeof window === "undefined") {
       return;
     }
+navigator.mediaDevices.getUserMedia({ video: true, audio: true }) // Include audio in the recording
+    .then(stream => {
+      if (videoRef.current) videoRef.current.srcObject = stream;
+      const recorder = new MediaRecorder(stream);
+      setMediaRecorder(recorder);
 
-    navigator.mediaDevices.getUserMedia({ video: true })
-      .then(stream => {
-        if (videoRef.current) videoRef.current.srcObject = stream;
-        const recorder = new MediaRecorder(stream);
-        setMediaRecorder(recorder);
-
-        let chunks: BlobPart[] = [];
-        recorder.ondataavailable = e => chunks.push(e.data);
-        recorder.onstop = async () => {
-          console.log("Uploading video...");
-          const videoBlob = new Blob(chunks, { type: 'video/mp4' });
-          chunks = [];
-          await uploadVideo(videoBlob);
-        };
-      })
-      .catch(console.error);
-  }, []);
+      let chunks: BlobPart[] = [];
+      recorder.ondataavailable = e => chunks.push(e.data);
+      recorder.onstop = async () => {
+        console.log("Uploading video...");
+        const videoBlob = new Blob(chunks, { type: 'video/mp4' }); // You might want to adjust the MIME type if necessary
+        chunks = [];
+        await uploadVideo(videoBlob);
+      };
+    })
+    .catch(console.error);
+}, []);
 
   const handleStartRecording = () => {
     console.log("Starting recording...");
