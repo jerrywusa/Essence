@@ -1,11 +1,6 @@
-import {
-  ClerkProvider,
-  SignInButton,
-  SignedIn,
-  SignedOut,
-  UserButton,
-} from "@clerk/nextjs";
+import { ClerkProvider } from "@clerk/nextjs";
 import "./globals.css";
+import Header from "./header/header";
 
 export default function RootLayout({
   children,
@@ -17,12 +12,7 @@ export default function RootLayout({
       <html lang="en">
         <body>
           <header>
-            {/* <SignedOut>
-              <SignInButton />
-            </SignedOut>
-            <SignedIn>
-              <UserButton />
-            </SignedIn> */}
+            <Header />
           </header>
           <main>{children}</main>
         </body>

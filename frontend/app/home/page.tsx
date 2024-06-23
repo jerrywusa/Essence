@@ -2,7 +2,7 @@ import { FunctionComponent } from "react";
 import img from "./wows ss.jpeg";
 import Lessons from "./lessons";
 import { LessonType } from "../types";
-import Header from "./header";
+import Header from "../header/header";
 
 interface HomeProps {}
 
@@ -39,7 +39,6 @@ const name = "Jerry";
 const Home: FunctionComponent<HomeProps> = () => {
   return (
     <>
-      <Header />
       <div
         style={{
           paddingLeft: "25px",
