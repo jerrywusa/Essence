@@ -16,4 +16,10 @@ export interface LessonType {
 
 export interface DataType {
   lessons: Array<LessonType>;
+  historyEntryList: Array<HistoryEntryType>;
+}
+
+export interface HistoryEntryType {
+  lessonId: string;
+  score: number;
 }

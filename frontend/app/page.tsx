@@ -5,7 +5,7 @@ import React from "react";
 import { useUser, SignInButton } from "@clerk/nextjs"; // Import the necessary hooks from Clerk
 import Image from "next/image";
 import gif from "../public/ScreenRecording2024-06-22at11.06.48PM-ezgif.com-video-to-gif-converter.gif";
-import { DataType, LessonType } from "./types";
+import { DataType, HistoryEntryType, LessonType } from "./types";
 import { useRouter } from "next/navigation";
 import imgOne from "../public/images/littleWomen.png";
 import imgTwo from "../public/images/hungerGames.png";
@@ -54,9 +54,24 @@ const lessons: Array<LessonType> = [
     scriptComponent: ForestGump,
   },
 ];
-export const Context = React.createContext({ lessons });
 
-const data: DataType = { lessons };
+const historyEntryList: Array<HistoryEntryType> = [
+  {
+    lessonId: "id2",
+    score: 20,
+  },
+  {
+    lessonId: "id1",
+    score: 10,
+  },
+  {
+    lessonId: "id3",
+    score: 30,
+  },
+];
+export const Context = React.createContext({ lessons, historyEntryList });
+
+const data: DataType = { lessons, historyEntryList };
 
 export default function Home() {
   const { isSignedIn } = useUser(); // Get the user's authentication status
@@ -206,7 +221,7 @@ export default function Home() {
               style={{ backgroundColor: "#D73939" }}
               className="px-6 py-3 text-white rounded text-lg"
             >
-              Let's begin!
+              {"Let's begin!"}
             </button>
           </SignInButton>
         </div>
