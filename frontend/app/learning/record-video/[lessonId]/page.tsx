@@ -54,10 +54,7 @@ const Page = () => {
         </div>
         
       </div>
-      <div className="flex justify-end mt-8 space-x-4">
-        <button className="bg-gray-700 text-white py-2 px-4 rounded">Redo</button>
-        <button className="bg-red-600 text-white py-2 px-4 rounded">Done</button>
-      </div>
+     
     </div>
   );
 };
