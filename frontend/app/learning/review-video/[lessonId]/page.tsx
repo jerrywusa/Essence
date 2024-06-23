@@ -55,6 +55,7 @@ const Page = () => {
       }
       const data = await response.json();
       setResults(data);
+      console.log(data);
     } catch (err) {
       setError(err.message);
     }
