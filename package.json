@@ -2,6 +2,7 @@
   "dependencies": {
     "chart.js": "^4.4.3",
     "next-video": "^1.1.0",
+    "radix-ui": "^1.0.1",
     "react-chartjs-2": "^5.2.0",
     "uid": "^2.0.2"
   }
