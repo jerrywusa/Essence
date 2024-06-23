@@ -1,0 +1,145 @@
+{
+    "emotions": {
+        "(1.2, 2.7)": [
+            {
+                "name": "Realization",
+                "score": 25.54
+            },
+            {
+                "name": "Disappointment",
+                "score": 18.84
+            },
+            {
+                "name": "Anger",
+                "score": 13.01
+            }
+        ],
+        "(4.0, 4.5)": [
+            {
+                "name": "Calmness",
+                "score": 17.02
+            },
+            {
+                "name": "Contemplation",
+                "score": 14.28
+            },
+            {
+                "name": "Confusion",
+                "score": 10.31
+            }
+        ],
+        "(5.0, 9.5)": [
+            {
+                "name": "Calmness",
+                "score": 12.07
+            },
+            {
+                "name": "Determination",
+                "score": 8.84
+            },
+            {
+                "name": "Pride",
+                "score": 8.57
+            }
+        ],
+        "(10.3, 14.1)": [
+            {
+                "name": "Calmness",
+                "score": 27.51
+            },
+            {
+                "name": "Nostalgia",
+                "score": 24.48
+            },
+            {
+                "name": "Admiration",
+                "score": 18.86
+            }
+        ],
+        "(15.9, 18.6)": [
+            {
+                "name": "Calmness",
+                "score": 32.9
+            },
+            {
+                "name": "Sadness",
+                "score": 15.06
+            },
+            {
+                "name": "Sympathy",
+                "score": 9.08
+            }
+        ],
+        "(20.7, 23.1)": [
+            {
+                "name": "Calmness",
+                "score": 20.45
+            },
+            {
+                "name": "Nostalgia",
+                "score": 11.04
+            },
+            {
+                "name": "Sadness",
+                "score": 10.95
+            }
+        ],
+        "(26.3, 27.7)": [
+            {
+                "name": "Nostalgia",
+                "score": 33.46
+            },
+            {
+                "name": "Disappointment",
+                "score": 28.55
+            },
+            {
+                "name": "Realization",
+                "score": 19.91
+            }
+        ],
+        "(30.0, 31.0)": [
+            {
+                "name": "Calmness",
+                "score": 35.45
+            },
+            {
+                "name": "Interest",
+                "score": 17.05
+            },
+            {
+                "name": "Concentration",
+                "score": 14.44
+            }
+        ],
+        "(34.9, 36.2)": [
+            {
+                "name": "Determination",
+                "score": 15.52
+            },
+            {
+                "name": "Calmness",
+                "score": 14.06
+            },
+            {
+                "name": "Interest",
+                "score": 13.13
+            }
+        ],
+        "(37.8, 40.3)": [
+            {
+                "name": "Disappointment",
+                "score": 28.55
+            },
+            {
+                "name": "Distress",
+                "score": 22.75
+            },
+            {
+                "name": "Realization",
+                "score": 19.37
+            }
+        ]
+    },
+    "script" : "She wasn’t just my ally, she was my friend. I see by meadows that grow by my house. I hear her in mockingjay song. I see her in my sister Prim, who was too young, too gentle, and I couldn’t save her. I’m sorry"
+}

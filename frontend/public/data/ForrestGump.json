@@ -1,0 +1,89 @@
+{
+    "emotions" : {
+        "(3.2, 4.5)": [
+            {
+                "name": "Confusion",
+                "score": 29.42
+            },
+            {
+                "name": "Disappointment",
+                "score": 20.56
+            },
+            {
+                "name": "Sadness",
+                "score": 19.58
+            }
+        ],
+        "(4.8, 9.5)": [
+            {
+                "name": "Contemplation",
+                "score": 23.35
+            },
+            {
+                "name": "Calmness",
+                "score": 20.5
+            },
+            {
+                "name": "Sadness",
+                "score": 14.05
+            }
+        ],
+        "(9.6, 14.1)": [
+            {
+                "name": "Confusion",
+                "score": 48.26
+            },
+            {
+                "name": "Sadness",
+                "score": 44.55
+            },
+            {
+                "name": "Doubt",
+                "score": 40.28
+            }
+        ],
+        "(13.7, 18.6)": [
+            {
+                "name": "Contemplation",
+                "score": 32.22
+            },
+            {
+                "name": "Realization",
+                "score": 28.18
+            },
+            {
+                "name": "Calmness",
+                "score": 25.85
+            }
+        ],
+        "(20.4, 21.3)": [
+            {
+                "name": "Distress",
+                "score": 9.41
+            },
+            {
+                "name": "Confusion",
+                "score": 9.14
+            },
+            {
+                "name": "Realization",
+                "score": 8.41
+            }
+        ],
+        "(22.1, 23.1)": [
+            {
+                "name": "Confusion",
+                "score": 12.93
+            },
+            {
+                "name": "Calmness",
+                "score": 12.65
+            },
+            {
+                "name": "Awe",
+                "score": 9.02
+            }
+        ]
+    },
+    "script" : "I don't know if mama was right or it was Lieutenant Dan... I don't know if we each have a destiny or if we're all just floating around, accidentally, like on a breeze"
+}
