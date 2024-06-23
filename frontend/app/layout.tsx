@@ -2,8 +2,7 @@
 import { ClerkProvider } from "@clerk/nextjs";
 import "./globals.css";
 import Header from "./header/header";
-import { usePathname } from 'next/navigation';
-
+import { usePathname } from "next/navigation";
 
 export default function RootLayout({
   children,
@@ -15,8 +14,14 @@ export default function RootLayout({
     <ClerkProvider>
       <html lang="en">
         <body>
-        {pathname !== '/' && (
-            <header>
+          {pathname !== "/" && (
+            <header
+              className="sticky top-0"
+              style={{
+                backgroundColor: "#101010",
+                zIndex: "100",
+              }}
+            >
               <Header />
             </header>
           )}
