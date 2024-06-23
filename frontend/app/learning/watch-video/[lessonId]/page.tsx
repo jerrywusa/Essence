@@ -29,6 +29,12 @@ const WatchVideo: FunctionComponent<WatchVideoProps> = ({ params }) => {
     marginRight: "auto",
   };
 
+  function replayVideo() {
+    var video = document.getElementById(lesson.videoId);
+    video.currentTime = 0; // Rewind the video to the beginning
+    video.play(); // Start playing the video
+  }
+
   return (
     <>
       <div
@@ -38,7 +44,11 @@ const WatchVideo: FunctionComponent<WatchVideoProps> = ({ params }) => {
           height: "90vh",
         }}
       >
-        <VideoPlayer link={lesson.videoLink} style={videoStyle} />
+        <VideoPlayer
+          link={lesson.videoLink}
+          style={videoStyle}
+          videoId={lesson.videoId}
+        />
 
         <div style={{ display: "flex", marginTop: "20px" }}>
           <p
@@ -63,6 +73,7 @@ const WatchVideo: FunctionComponent<WatchVideoProps> = ({ params }) => {
               opacity: ".5",
               marginLeft: "180px",
             }}
+            onClick={() => replayVideo()}
           >
             Replay
           </Button>
