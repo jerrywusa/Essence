@@ -1,46 +1,14 @@
-import { FunctionComponent } from "react";
-import img from "./wows ss.jpeg";
+"use client";
+
+import { FunctionComponent, useContext } from "react";
 import Lessons from "./lessons";
-import { LessonType } from "../types";
+import { Context } from "../page";
 
 interface HomeProps {}
 
-const lessonArr: Array<LessonType> = [
-  {
-    image: img,
-    title: "title 1",
-    speechType: "dialogue",
-    lessonId: "id1",
-  },
-  {
-    image: img,
-    title: "title 2",
-    speechType: "monologue",
-    lessonId: "id2",
-  },
-  {
-    image: img,
-    title: "title 3",
-    speechType: "monologue",
-    lessonId: "id3",
-  },
-  {
-    image: img,
-    title: "title 4",
-    speechType: "monologue",
-    lessonId: "id4",
-  },
-  {
-    image: img,
-    title: "title 5",
-    speechType: "dialogue",
-    lessonId: "id5",
-  },
-];
-
-const name = "Jerry";
-
 const Home: FunctionComponent<HomeProps> = () => {
+  const { lessons, name } = useContext(Context);
+
   return (
     <>
       <div
@@ -56,7 +24,7 @@ const Home: FunctionComponent<HomeProps> = () => {
       >
         Welcome back, {name}!
       </div>
-      <Lessons lessons={lessonArr} />;
+      <Lessons lessons={lessons} />;
     </>
   );
 };

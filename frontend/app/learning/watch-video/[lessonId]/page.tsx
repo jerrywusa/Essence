@@ -1,4 +1,7 @@
-import { FunctionComponent } from "react";
+"use client";
+
+import { Context } from "@/app/page";
+import { FunctionComponent, useContext } from "react";
 
 interface WatchVideoProps {
   params: {
@@ -7,8 +10,12 @@ interface WatchVideoProps {
 }
 
 const WatchVideo: FunctionComponent<WatchVideoProps> = ({ params }) => {
+  const { lessons } = useContext(Context);
+
+  const lesson = lessons.find((lesson) => lesson.lessonId === params.lessonId);
+
   return (
-    <div style={{ color: "white" }}>My Post: {params.lessonId ?? "no id"}</div>
+    <div style={{ color: "white" }}>My Post: {lesson?.title ?? "no title"}</div>
   );
 };
 
