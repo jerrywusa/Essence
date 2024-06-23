@@ -10,3 +10,8 @@ export interface LessonType {
   speechType: string;
   lessonId: string;
 }
+
+export interface DataType {
+  lessons: Array<LessonType>;
+  name: string;
+}
