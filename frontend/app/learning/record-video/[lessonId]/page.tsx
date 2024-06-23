@@ -35,6 +35,7 @@ const Page = () => {
           <p>The brokers rush out of the office, pumped up and ready to conquer Wall Street.</p>
           <p className="mt-8 italic">end of script</p>
         </div>
+        
       </div>
       <div className="flex justify-end mt-8 space-x-4">
         <button className="bg-gray-700 text-white py-2 px-4 rounded">Redo</button>
