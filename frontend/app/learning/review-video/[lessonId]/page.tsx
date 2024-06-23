@@ -15,15 +15,17 @@ const Page = () => {
   const { lessons } = useContext(Context);
   const searchParams = useSearchParams();
   const videoId = searchParams.get('videoId')
-
-  const [lastVideoId, setLastVideoId] = useState<string | null>(null);
   const [progress, setProgress] = useState(70); // Set the progress value
   const router = useRouter();
   const params = useParams();
   const lessonId = params.lessonId;
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [results, setResults] = useState(null);
 
   const lesson = lessons.find((lesson) => lesson.lessonId === lessonId);
 
+  
   const [videoUrl, setVideoUrl] = useState<string>('');
 
   useEffect(() => {
@@ -38,6 +40,33 @@ const Page = () => {
 
     fetchUrl();
   }, [`/videos/${videoId}.mp4`]);
+
+  const fetchData = async () => {
+    try {
+      const response = await fetch(`http://localhost:8000/analyze-audio?lesson_id=${lessonId}&video_id=${videoId}.mp4`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        }
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      const data = await response.json();
+      setResults(data);
+    } catch (err) {
+      setError(err.message);
+    }
+  };
+  
+  if (loading) {
+    console.log(videoId);
+    console.log("fetching");
+    setLoading(false);
+    fetchData();
+    console.log("hefsaleoeo");
+  }
 
   if (!videoUrl) {
     return <div>Loading...</div>;
