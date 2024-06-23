@@ -12,30 +12,35 @@ const lessons: Array<LessonType> = [
     title: "title 1",
     speechType: "dialogue",
     lessonId: "id1",
+    videoLink: "http://localhost:3000/videos/ForestGump.mp4",
   },
   {
     image: img,
     title: "title 2",
     speechType: "monologue",
     lessonId: "id2",
+    videoLink: "http://localhost:3000/videos/ForestGump.mp4",
   },
   {
     image: img,
     title: "title 3",
     speechType: "monologue",
     lessonId: "id3",
+    videoLink: "http://localhost:3000/videos/ForestGump.mp4",
   },
   {
     image: img,
     title: "title 4",
     speechType: "monologue",
     lessonId: "id4",
+    videoLink: "http://localhost:3000/videos/ForestGump.mp4",
   },
   {
     image: img,
     title: "title 5",
     speechType: "dialogue",
     lessonId: "id5",
+    videoLink: "http://localhost:3000/videos/ForestGump.mp4",
   },
 ];
 const name = "Jerry";
