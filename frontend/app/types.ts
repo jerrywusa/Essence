@@ -11,6 +11,7 @@ export interface LessonType {
   lessonId: string;
   videoLink: string;
   videoId: string;
+  scriptComponent: React.FC;
 }
 
 export interface DataType {
