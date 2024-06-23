@@ -6,7 +6,6 @@ import { Button } from "@/components/ui/button";
 import VideoPlayer from "../VideoPlayer";
 import { useRouter } from "next/navigation";
 
-
 interface WatchVideoProps {
   params: {
     lessonId: string;
@@ -16,7 +15,6 @@ interface WatchVideoProps {
 const WatchVideo: FunctionComponent<WatchVideoProps> = ({ params }) => {
   const { lessons } = useContext(Context);
   const router = useRouter();
-
 
   const lesson = lessons.find((lesson) => lesson.lessonId === params.lessonId);
 
@@ -34,7 +32,7 @@ const WatchVideo: FunctionComponent<WatchVideoProps> = ({ params }) => {
   };
 
   function replayVideo() {
-    var video = document.getElementById(lesson.videoId);
+    var video = document.getElementById(lesson!.videoId)!;
     video.currentTime = 0; // Rewind the video to the beginning
     video.play(); // Start playing the video
   }
@@ -89,7 +87,9 @@ const WatchVideo: FunctionComponent<WatchVideoProps> = ({ params }) => {
               color: "white",
               marginLeft: "70px",
             }}
-            onClick={() => router.push(`/learning/record-video/${lesson.lessonId}`)}
+            onClick={() =>
+              router.push(`/learning/record-video/${lesson.lessonId}`)
+            }
           >
             Next
           </Button>
