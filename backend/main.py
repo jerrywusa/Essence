@@ -84,21 +84,6 @@ async def analyze_audio_endpoint(video_id: str):
             {"name": "Contemplation", "score": 15.99},
             {"name": "Calmness", "score": 12.79}
         ]}
-        total_score = 0
-        max_score = 0
-        
-        for time_range in professional:
-            if time_range in user:
-                prof_emotions = [e['name'] for e in professional[time_range]]
-                user_emotions = [e['name'] for e in user[time_range]]
-                
-                for i, prof_emotion in enumerate(prof_emotions):
-                    if i < len(user_emotions):
-                        max_score += 3
-                        if prof_emotion == user_emotions[i]:
-                            total_score += 3
-                        elif prof_emotion in user_emotions:
-                            total_score += 1
 
         overlap_score, total_possible_score = compare_emotions(professional, user)
         performance_score = (overlap_score / total_possible_score) * 100 if total_possible_score > 0 else 0
