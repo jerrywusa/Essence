@@ -1,20 +1,19 @@
 from fastapi import FastAPI, HTTPException, WebSocket
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import JSONResponse
 from fastapi.websockets import WebSocketDisconnect
 
 from firebase_admin import credentials, initialize_app, storage
 from hume import HumeStreamClient
 from hume.models.config import ProsodyConfig, FaceConfig    
 
-from moviepy.editor import VideoFileClip
-
-from io import BytesIO
+from hume_audio import analyze_audio_with_hume
 import base64
 
 import cv2
 import numpy as np
 
-import os, json
+import os
 import asyncio
 from dotenv import load_dotenv
 load_dotenv()  
@@ -22,6 +21,7 @@ load_dotenv()
 origins = ["*"]
 
 app = FastAPI()
+
 app.add_middleware(
     CORSMiddleware,
     allow_origins=origins,
@@ -30,18 +30,18 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-
-# Initialize Firebase
-cred = credentials.Certificate('serviceAccountKey.json')
-initialize_app(cred, {'storageBucket': os.getenv("FIREBASE_BUCKET_NAME")})
-
-# FastAPI app
-app = FastAPI()
-
 # Hume API key
 HUME_API_KEY = os.getenv("HUME_API_KEY")
 
-bucket = storage.bucket()
+@app.post("/analyze-audio")
+async def analyze_audio_endpoint(video_id: str):
+    try:
+        results = await analyze_audio_with_hume(video_id)
+        return JSONResponse(content=results)
+    except HTTPException as e:
+        return JSONResponse(status_code=e.status_code, content={"detail": e.detail})
+    except Exception as e:
+        return JSONResponse(status_code=500, content={"detail": str(e)})
 
 @app.websocket("/ws")
 async def websocket_endpoint(websocket: WebSocket):
@@ -84,7 +84,7 @@ async def websocket_endpoint(websocket: WebSocket):
                                 {"name": emotion['name'], "score": round(emotion['score'] * 100, 2)}
                                 for emotion in sorted_emotions
                             ]
-                        }
+                        } 
 
                         # Print formatted emotions
                         emotions_str = ", ".join([f"{e['name']}: {e['score']}%" for e in formatted_emotions['emotions']])

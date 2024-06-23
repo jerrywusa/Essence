@@ -1,6 +1,8 @@
 "use client";
 import dynamic from 'next/dynamic';
-import { ClerkProvider, useUser } from '@clerk/nextjs';
+import { useUser } from '@clerk/nextjs';
+import { useState } from 'react';
+import { useRouter, useParams } from 'next/navigation';
 
 const VideoRecorder = dynamic(() => import('../../../../components/VideoRecorder'), {
   ssr: false
@@ -8,6 +10,16 @@ const VideoRecorder = dynamic(() => import('../../../../components/VideoRecorder
 
 const Page = () => {
   const { user, isSignedIn } = useUser(); // Using Clerk's useUser hook for client-side user data
+  const [lastVideoId, setLastVideoId] = useState<string | null>(null);
+  const router = useRouter();
+  const params = useParams();
+  const lessonId = params.lessonId;
+  
+  const handleVideoUpload = (videoId: string) => {
+    setLastVideoId(videoId);
+    console.log('Last video ID:', videoId);
+    router.push(`/learning/review-video/${lessonId}?videoId=${videoId}`);
+  };
 
   if (!isSignedIn) {
     return <p>Loading or not signed in...</p>;
@@ -18,7 +30,7 @@ const Page = () => {
       
       <div className="flex space-x-8">
         <div className="w-1/2">
-          <VideoRecorder />
+          <VideoRecorder onVideoUpload={handleVideoUpload}/>
         </div>
         <div style={{ backgroundColor: '#1B1B1B', height: '658px' }} className="w-1/2 p-8 rounded-lg">
           <h2 className="text-2xl font-semibold mb-4">The Script</h2>
