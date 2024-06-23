@@ -26,8 +26,6 @@ const Lesson: FunctionComponent<LessonProps> = ({ lesson }) => {
         position: "relative",
         width: "444px",
         height: "340.36px",
-        border: "1px solid orange",
-        zIndex: "100",
       }}
       onClick={() => router.push(`/learning/watch-video/${lesson.lessonId}`)}
     >
