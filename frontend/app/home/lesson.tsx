@@ -1,11 +1,13 @@
+"use client";
+
 import { FunctionComponent } from "react";
 import vectorSvg from "./Vector.svg";
-import Image, { StaticImageData } from "next/image";
+import Image from "next/image";
+import { LessonType } from "../types";
+import { useRouter } from "next/navigation";
 
 interface LessonProps {
-  image: StaticImageData;
-  title: string;
-  speechType: string;
+  lesson: LessonType;
 }
 
 const imageStyle = {
@@ -15,20 +17,21 @@ const imageStyle = {
   objectFit: "cover",
 };
 
-const Lesson: FunctionComponent<LessonProps> = ({
-  image,
-  title,
-  speechType,
-}) => {
+const Lesson: FunctionComponent<LessonProps> = ({ lesson }) => {
+  const router = useRouter();
+
   return (
     <div
       style={{
         position: "relative",
         width: "444px",
         height: "340.36px",
+        border: "1px solid orange",
+        zIndex: "100",
       }}
+      onClick={() => router.push(`/watch-video/${lesson.lessonId}`)}
     >
-      <Image src={image} alt="image description" style={imageStyle} />
+      <Image src={lesson.image} alt="image description" style={imageStyle} />
       <div
         style={{
           position: "absolute",
@@ -52,7 +55,7 @@ const Lesson: FunctionComponent<LessonProps> = ({
           fontFamily: "Arial, sans-serif",
         }}
       >
-        {title}
+        {lesson.title}
       </p>
       <p
         style={{
@@ -66,7 +69,7 @@ const Lesson: FunctionComponent<LessonProps> = ({
           opacity: ".75",
         }}
       >
-        {speechType}
+        {lesson.speechType}
       </p>
       <Image
         src={vectorSvg}

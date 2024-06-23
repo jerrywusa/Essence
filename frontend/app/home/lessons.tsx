@@ -19,12 +19,7 @@ const Lessons: FunctionComponent<LessonsProps> = ({ lessons }) => {
       }}
     >
       {lessons.map((lesson) => (
-        <Lesson
-          key={uid()}
-          image={lesson.image}
-          title={lesson.title}
-          speechType={lesson.speechType}
-        />
+        <Lesson key={lesson.lessonId} lesson={lesson} />
       ))}
     </div>
   );

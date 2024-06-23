@@ -8,4 +8,5 @@ export interface LessonType {
   image: StaticImageData;
   title: string;
   speechType: string;
+  lessonId: string;
 }
