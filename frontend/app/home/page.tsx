@@ -20,7 +20,7 @@ const Home: FunctionComponent<HomeProps> = async () => {
       <div
         style={{
           paddingLeft: "70px",
-          paddingBottom: "50px",
+          paddingBottom: "20px",
           paddingTop: "30px",
           fontSize: "56px",
           fontWeight: "bold",
@@ -29,6 +29,16 @@ const Home: FunctionComponent<HomeProps> = async () => {
         }}
       >
         {greetingText}
+      </div>
+      <div
+        className="text-white text-4xl font-bold"
+        style={{
+          opacity: ".50",
+          marginLeft: "70px",
+          marginBottom: "40px",
+        }}
+      >
+        Start practicing
       </div>
       {user && <Lessons />}
     </>

@@ -74,7 +74,7 @@ const WatchVideo: FunctionComponent<WatchVideoProps> = ({ params }) => {
               left: "50px",
               color: "white",
               opacity: ".7",
-              marginLeft: "180px",
+              marginLeft: "140px",
             }}
             onClick={() => replayVideo()}
           >
