@@ -1,12 +1,14 @@
-import { FunctionComponent, useId } from "react";
+"use client";
+
+import { Context } from "@/app/page";
+import { FunctionComponent, useContext } from "react";
 import Lesson from "./lesson";
-import { LessonType } from "../types";
 
-interface LessonsProps {
-  lessons: Array<LessonType>;
-}
+interface LessonsProps {}
 
-const Lessons: FunctionComponent<LessonsProps> = ({ lessons }) => {
+const Lessons: FunctionComponent<LessonsProps> = () => {
+  const { lessons } = useContext(Context);
+
   return (
     <div
       style={{

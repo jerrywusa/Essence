@@ -1,4 +1,4 @@
-import { FunctionComponent, useEffect } from "react";
+import { FunctionComponent } from "react";
 
 interface VideoPlayerProps {
   link: string; // string MUST begin with http

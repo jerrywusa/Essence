@@ -1,48 +1,8 @@
 import { FunctionComponent } from "react";
-import img from "./wows ss.jpeg";
 import Lessons from "./lessons";
-import { LessonType } from "../types";
 import { currentUser } from "@clerk/nextjs/server";
 
 interface HomeProps {}
-
-const lessonArr: Array<LessonType> = [
-  {
-    image: img,
-    title: "title 1",
-    speechType: "dialogue",
-    lessonId: "id1",
-    videoLink: "http://localhost:3003/videos/ForestGump.mp4",
-  },
-  {
-    image: img,
-    title: "title 2",
-    speechType: "monologue",
-    lessonId: "id2",
-    videoLink: "http://localhost:3003/videos/ForestGump.mp4",
-  },
-  {
-    image: img,
-    title: "title 3",
-    speechType: "monologue",
-    lessonId: "id3",
-    videoLink: "http://localhost:3003/videos/ForestGump.mp4",
-  },
-  {
-    image: img,
-    title: "title 4",
-    speechType: "monologue",
-    lessonId: "id4",
-    videoLink: "http://localhost:3003/videos/ForestGump.mp4",
-  },
-  {
-    image: img,
-    title: "title 5",
-    speechType: "dialogue",
-    lessonId: "id5",
-    videoLink: "http://localhost:3003/videos/ForestGump.mp4",
-  },
-];
 
 const Home: FunctionComponent<HomeProps> = async () => {
   const user = await currentUser();
@@ -70,7 +30,7 @@ const Home: FunctionComponent<HomeProps> = async () => {
       >
         {greetingText}
       </div>
-      {user && <Lessons lessons={lessonArr} />}
+      {user && <Lessons />}
     </>
   );
 };
