@@ -41,14 +41,13 @@ const VideoRecorder = () => {
       .catch(console.error);
   }, [user]);
 
-  const handleStartRecording = () => {
-    mediaRecorder?.start();
-    setIsRecording(true);
-  };
-
-  const handleStopRecording = () => {
-    mediaRecorder?.stop();
-    setIsRecording(false);
+  const handleToggleRecording = () => {
+    if (isRecording) {
+      mediaRecorder?.stop();
+    } else {
+      mediaRecorder?.start();
+    }
+    setIsRecording(!isRecording);
   };
 
   const captureThumbnail = (timestamp: string) => {
@@ -89,16 +88,30 @@ const VideoRecorder = () => {
   };
 
   return (
-    <div>
-      <video ref={videoRef} autoPlay muted></video>
+    <div style={{ backgroundColor: '#1B1B1B' }} className="p-8 rounded-lg">
+      <video ref={videoRef} autoPlay muted className="w-full h-auto rounded-lg"></video>
       <canvas ref={canvasRef} style={{ display: 'none' }}></canvas>
-      <button onClick={handleStartRecording} disabled={isRecording}>
-        Start Recording
+      <div className="flex justify-center mt-4">
+      <button
+        onClick={handleToggleRecording}
+        className="p-4 rounded-full focus:outline-none"
+      >
+        {isRecording ? (
+          <svg width="72" height="72" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="36" cy="36" r="35" stroke="#F2F2F2" stroke-width="2"/>
+          <rect x="22" y="23" width="27" height="27" rx="1" fill="#D73939"/>
+          </svg>
+          
+        ) : (
+          <svg width="72" height="72" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+<circle cx="36" cy="36" r="27" fill="#D73939"/>
+<circle cx="36" cy="36" r="35" stroke="#D73939" stroke-width="2"/>
+</svg>
+
+
+        )}
       </button>
-      <button onClick={handleStopRecording} disabled={!isRecording}>
-        Stop Recording
-      </button>
-      <p>Last recording timestamp: {recordingTimestamp}</p>
+      </div>
     </div>
   );
 };
