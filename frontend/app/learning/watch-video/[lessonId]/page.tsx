@@ -4,6 +4,8 @@ import { Context } from "@/app/page";
 import { FunctionComponent, useContext } from "react";
 import { Button } from "@/components/ui/button";
 import VideoPlayer from "../VideoPlayer";
+import { useRouter } from "next/navigation";
+
 
 interface WatchVideoProps {
   params: {
@@ -13,6 +15,8 @@ interface WatchVideoProps {
 
 const WatchVideo: FunctionComponent<WatchVideoProps> = ({ params }) => {
   const { lessons } = useContext(Context);
+  const router = useRouter();
+
 
   const lesson = lessons.find((lesson) => lesson.lessonId === params.lessonId);
 
@@ -85,6 +89,7 @@ const WatchVideo: FunctionComponent<WatchVideoProps> = ({ params }) => {
               color: "white",
               marginLeft: "70px",
             }}
+            onClick={() => router.push(`/learning/record-video/${lesson.lessonId}`)}
           >
             Next
           </Button>
