@@ -1,7 +1,6 @@
 import { FunctionComponent, useId } from "react";
 import Lesson from "./lesson";
 import { LessonType } from "../types";
-import { uid } from "uid";
 
 interface LessonsProps {
   lessons: Array<LessonType>;
