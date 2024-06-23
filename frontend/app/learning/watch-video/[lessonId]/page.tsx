@@ -1,9 +1,9 @@
 "use client";
 
 import { Context } from "@/app/page";
-import { FunctionComponent, useContext } from "react";
-import Image from "next/image";
+import { FunctionComponent, Suspense, useContext } from "react";
 import { Button } from "@/components/ui/button";
+import VideoPlayer from "../VideoPlayer";
 
 interface WatchVideoProps {
   params: {
@@ -20,53 +20,66 @@ const WatchVideo: FunctionComponent<WatchVideoProps> = ({ params }) => {
     return <div>undefined</div>;
   }
 
-  const imageStyle = {
+  const videoStyle = {
     borderRadius: 10,
-    width: 444,
-    height: 340.36,
+    width: 1350,
+    height: 600,
     objectFit: "cover",
-    border: "1px solid green",
+    marginLeft: "auto",
+    marginRight: "auto",
   };
 
   return (
-    <div
-      style={{
-        position: "relative",
-        width: "100vw",
-        height: "90vh",
-        border: "1px solid orange",
-      }}
-    >
-      <Image src={lesson.image} alt="image description" style={imageStyle} />
-      <p
+    <>
+      <div
         style={{
           position: "relative",
-          top: "275px",
-          left: "50px",
-          width: "1000px",
-          color: "white",
-          fontSize: "32px",
-          fontWeight: "bold",
-          fontFamily: "Arial, sans-serif",
-          border: "1px solid green",
+          width: "100vw",
+          height: "90vh",
         }}
       >
-        {lesson.title}
-      </p>
-      <Button
-        variant="ghost"
-        style={{
-          position: "relative",
-          top: "275px",
-          left: "50px",
-          color: "white",
-          opacity: ".5",
-          border: "1px solid green",
-        }}
-      >
-        Replay
-      </Button>
-    </div>
+        <VideoPlayer link={lesson.videoLink} style={videoStyle} />
+
+        <div style={{ display: "flex", marginTop: "20px" }}>
+          <p
+            style={{
+              position: "relative",
+              left: "50px",
+              width: "1000px",
+              color: "white",
+              fontSize: "32px",
+              fontWeight: "bold",
+              fontFamily: "Arial, sans-serif",
+            }}
+          >
+            {lesson.title}
+          </p>
+          <Button
+            variant="ghost"
+            style={{
+              position: "relative",
+              left: "50px",
+              color: "white",
+              opacity: ".5",
+              marginLeft: "180px",
+            }}
+          >
+            Replay
+          </Button>
+          <Button
+            variant="destructive"
+            style={{
+              position: "relative",
+              color: "white",
+              opacity: ".5",
+              marginLeft: "70px",
+            }}
+          >
+            Next
+          </Button>
+        </div>
+      </div>
+    </>
   );
 };
 

@@ -1,10 +1,8 @@
-
-
 import { FunctionComponent } from "react";
 import img from "./wows ss.jpeg";
 import Lessons from "./lessons";
 import { LessonType } from "../types";
-import { currentUser } from '@clerk/nextjs/server';
+import { currentUser } from "@clerk/nextjs/server";
 
 interface HomeProps {}
 
@@ -47,7 +45,9 @@ const Home: FunctionComponent<HomeProps> = async () => {
   // Determine the greeting text
   let greetingText = "Welcome!";
   if (user) {
-    greetingText = `Welcome back, ${user.firstName || user.fullName || 'there'}!`;
+    greetingText = `Welcome back, ${
+      user.firstName || user.fullName || "there"
+    }!`;
   }
 
   return (
