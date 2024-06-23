@@ -36,7 +36,56 @@ HUME_API_KEY = os.getenv("HUME_API_KEY")
 @app.post("/analyze-audio")
 async def analyze_audio_endpoint(video_id: str):
     try:
-        results = await analyze_audio_with_hume(video_id)
+        user = await analyze_audio_with_hume(video_id)
+        professional = {
+        "(3.1, 4.5)": [
+            {"name": "Confusion", "score": 37.05},
+            {"name": "Disappointment", "score": 23.48},
+            {"name": "Distress", "score": 20.18}
+        ],
+        "(4.6, 9.5)": [
+            {"name": "Calmness", "score": 26.38},
+            {"name": "Contemplation", "score": 23.04},
+            {"name": "Awkwardness", "score": 18.4}
+        ],
+        "(9.6, 14.1)": [
+            {"name": "Sadness", "score": 42.54},
+            {"name": "Fear", "score": 38.9},
+            {"name": "Confusion", "score": 38.68}
+        ],
+        "(13.7, 18.6)": [
+            {"name": "Contemplation", "score": 42.01},
+            {"name": "Calmness", "score": 34.61},
+            {"name": "Realization", "score": 24.12}
+        ],
+        "(18.7, 23.2)": [
+            {"name": "Determination", "score": 19.23},
+            {"name": "Contemplation", "score": 15.99},
+            {"name": "Calmness", "score": 12.79}
+        ]}
+        # def compare_emotions(professional, user):
+        total_score = 0
+        max_score = 0
+        
+        for time_range in professional:
+            if time_range in user:
+                prof_emotions = [e['name'] for e in professional[time_range]]
+                user_emotions = [e['name'] for e in user[time_range]]
+                
+                for i, prof_emotion in enumerate(prof_emotions):
+                    if i < len(user_emotions):
+                        max_score += 3
+                        if prof_emotion == user_emotions[i]:
+                            total_score += 3
+                        elif prof_emotion in user_emotions:
+                            total_score += 1
+
+        
+
+# total_score, max_score = compare_emotions(professional, user)
+        print(total_score, max_score)
+        performance_score = (total_score / max_score) * 100 if max_score > 0 else 0
+        results = {"professional" : professional, "user" : user, "total_score" : total_score, "max_score" : max_score, "performance_score" : performance_score}
         return JSONResponse(content=results)
     except HTTPException as e:
         return JSONResponse(status_code=e.status_code, content={"detail": e.detail})
