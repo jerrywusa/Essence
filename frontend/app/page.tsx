@@ -5,12 +5,16 @@ import React from "react";
 import { useUser, SignInButton } from "@clerk/nextjs"; // Import the necessary hooks from Clerk
 import Image from "next/image";
 import gif from "../public/ScreenRecording2024-06-22at11.06.48PM-ezgif.com-video-to-gif-converter.gif";
-import { DataType, LessonType } from "./types";
+import { DataType, HistoryEntryType, LessonType } from "./types";
 import { useRouter } from "next/navigation";
 import imgOne from "../public/images/littleWomen.png";
 import imgTwo from "../public/images/hungerGames.png";
 import imgThree from "../public/images/wows.jpeg";
 import imgFour from "../public/images/gump.png";
+import LittleWoman from '../components/scripts/LittleWoman';
+import HungerGames from '../components/scripts/HungerGames';
+import Wows from '../components/scripts/Wows';
+import ForestGump from '../components/scripts/ForestGump';
 
 const lessons: Array<LessonType> = [
   {
@@ -20,6 +24,7 @@ const lessons: Array<LessonType> = [
     lessonId: "id1",
     videoLink: "http://localhost:3000/videos/LittleWoman.mp4",
     videoId: "videoId1",
+    scriptComponent: LittleWoman,
   },
   {
     image: imgTwo,
@@ -28,6 +33,7 @@ const lessons: Array<LessonType> = [
     lessonId: "id2",
     videoLink: "http://localhost:3000/videos/HungerGames.mp4",
     videoId: "videoId2",
+    scriptComponent: HungerGames,
   },
   {
     image: imgThree,
@@ -36,6 +42,7 @@ const lessons: Array<LessonType> = [
     lessonId: "id3",
     videoLink: "http://localhost:3000/videos/wows.mp4",
     videoId: "videoId3",
+    scriptComponent: Wows,
   },
   {
     image: imgFour,
@@ -44,11 +51,27 @@ const lessons: Array<LessonType> = [
     lessonId: "id4",
     videoLink: "http://localhost:3000/videos/ForestGump.mp4",
     videoId: "videoId4",
+    scriptComponent: ForestGump,
   },
 ];
-export const Context = React.createContext({ lessons });
 
-const data: DataType = { lessons };
+const historyEntryList: Array<HistoryEntryType> = [
+  {
+    lessonId: "id2",
+    score: 20,
+  },
+  {
+    lessonId: "id1",
+    score: 10,
+  },
+  {
+    lessonId: "id3",
+    score: 30,
+  },
+];
+export const Context = React.createContext({ lessons, historyEntryList });
+
+const data: DataType = { lessons, historyEntryList };
 
 export default function Home() {
   const { isSignedIn } = useUser(); // Get the user's authentication status
@@ -198,7 +221,7 @@ export default function Home() {
               style={{ backgroundColor: "#D73939" }}
               className="px-6 py-3 text-white rounded text-lg"
             >
-              Let's begin!
+              {"Let's begin!"}
             </button>
           </SignInButton>
         </div>
