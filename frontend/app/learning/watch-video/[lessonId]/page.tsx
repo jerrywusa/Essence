@@ -4,6 +4,8 @@ import { Context } from "@/app/page";
 import { FunctionComponent, useContext } from "react";
 import { Button } from "@/components/ui/button";
 import VideoPlayer from "../VideoPlayer";
+import { useRouter } from "next/navigation";
+
 
 interface WatchVideoProps {
   params: {
@@ -13,6 +15,8 @@ interface WatchVideoProps {
 
 const WatchVideo: FunctionComponent<WatchVideoProps> = ({ params }) => {
   const { lessons } = useContext(Context);
+  const router = useRouter();
+
 
   const lesson = lessons.find((lesson) => lesson.lessonId === params.lessonId);
 
@@ -29,6 +33,12 @@ const WatchVideo: FunctionComponent<WatchVideoProps> = ({ params }) => {
     marginRight: "auto",
   };
 
+  function replayVideo() {
+    var video = document.getElementById(lesson.videoId);
+    video.currentTime = 0; // Rewind the video to the beginning
+    video.play(); // Start playing the video
+  }
+
   return (
     <>
       <div
@@ -38,7 +48,11 @@ const WatchVideo: FunctionComponent<WatchVideoProps> = ({ params }) => {
           height: "90vh",
         }}
       >
-        <VideoPlayer link={lesson.videoLink} style={videoStyle} />
+        <VideoPlayer
+          link={lesson.videoLink}
+          style={videoStyle}
+          videoId={lesson.videoId}
+        />
 
         <div style={{ display: "flex", marginTop: "20px" }}>
           <p
@@ -50,6 +64,7 @@ const WatchVideo: FunctionComponent<WatchVideoProps> = ({ params }) => {
               fontSize: "32px",
               fontWeight: "bold",
               fontFamily: "Arial, sans-serif",
+              marginLeft: "35px",
             }}
           >
             {lesson.title}
@@ -60,9 +75,10 @@ const WatchVideo: FunctionComponent<WatchVideoProps> = ({ params }) => {
               position: "relative",
               left: "50px",
               color: "white",
-              opacity: ".5",
+              opacity: ".7",
               marginLeft: "180px",
             }}
+            onClick={() => replayVideo()}
           >
             Replay
           </Button>
@@ -71,9 +87,9 @@ const WatchVideo: FunctionComponent<WatchVideoProps> = ({ params }) => {
             style={{
               position: "relative",
               color: "white",
-              opacity: ".5",
               marginLeft: "70px",
             }}
+            onClick={() => router.push(`/learning/record-video/${lesson.lessonId}`)}
           >
             Next
           </Button>

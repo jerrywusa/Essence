@@ -10,6 +10,7 @@ export interface LessonType {
   speechType: string;
   lessonId: string;
   videoLink: string;
+  videoId: string;
 }
 
 export interface DataType {
