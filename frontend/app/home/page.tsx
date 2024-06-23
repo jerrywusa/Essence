@@ -1,15 +1,3 @@
-<<<<<<< HEAD
-"use client";
-
-import { FunctionComponent, useContext } from "react";
-import Lessons from "./lessons";
-import { Context } from "../page";
-
-interface HomeProps {}
-
-const Home: FunctionComponent<HomeProps> = () => {
-  const { lessons, name } = useContext(Context);
-=======
 
 
 import { FunctionComponent } from "react";
@@ -61,7 +49,6 @@ const Home: FunctionComponent<HomeProps> = async () => {
   if (user) {
     greetingText = `Welcome back, ${user.firstName || user.fullName || 'there'}!`;
   }
->>>>>>> 306bd96bda713d5d0a910a598218566a0402906c
 
   return (
     <>
@@ -78,11 +65,7 @@ const Home: FunctionComponent<HomeProps> = async () => {
       >
         {greetingText}
       </div>
-<<<<<<< HEAD
-      <Lessons lessons={lessons} />;
-=======
       {user && <Lessons lessons={lessonArr} />}
->>>>>>> 306bd96bda713d5d0a910a598218566a0402906c
     </>
   );
 };
