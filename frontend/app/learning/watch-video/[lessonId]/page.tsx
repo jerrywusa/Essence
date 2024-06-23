@@ -1,7 +1,7 @@
 "use client";
 
 import { Context } from "@/app/page";
-import { FunctionComponent, Suspense, useContext } from "react";
+import { FunctionComponent, useContext } from "react";
 import { Button } from "@/components/ui/button";
 import VideoPlayer from "../VideoPlayer";
 
