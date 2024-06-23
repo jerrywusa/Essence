@@ -9,7 +9,7 @@ from hume.models.config import ProsodyConfig
 from dotenv import load_dotenv
 import firebase_admin
 from firebase_admin import credentials, storage
-
+import json
 # Load environment variables from .env file
 load_dotenv()
 
@@ -92,11 +92,13 @@ async def analyze_audio_with_hume(video_id: str):
                     print(f"Timestamp {formatted_emotions['timestamp']} - {emotions_str}")
 
                     # Add to results dictionary
-                    results[(float(formatted_emotions['timestamp']["start"]), float(formatted_emotions['timestamp']['end']))] = formatted_emotions['emotions']
+                    results[f"({formatted_emotions['timestamp']["start"]}, {formatted_emotions['timestamp']['end']})"] = formatted_emotions['emotions']
         
         return results
 
 if __name__ == "__main__":
     video_id = "ForrestGump.mp3"  # Replace with the path to your MP3 file in Firebase
     results = asyncio.run(analyze_audio_with_hume(video_id))
+    with open(f"{video_id}_results.json", "w") as json_file:
+        json.dump(results, json_file, indent=4)
     print(results)
