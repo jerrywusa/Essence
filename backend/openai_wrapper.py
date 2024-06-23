@@ -11,6 +11,7 @@ def create_client():
     )
 
 def setup_content(script, professional, user, performance_score):
+    performance_score = int(performance_score)
     return f"""
         // Script
         {script}
@@ -20,7 +21,7 @@ def setup_content(script, professional, user, performance_score):
 
         // Output
         I want the result in this specific format:
-        Elaborate on advice for both facial expressions and vocal expressions. Give it in a paragraph format and be concise. no more than 5 sentences
+        Give advice for both facial expressions and vocal expressions. Be as concise as possible. Give me 2 sentences
     
         
         // Json Data

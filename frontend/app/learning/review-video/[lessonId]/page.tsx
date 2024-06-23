@@ -15,13 +15,14 @@ const Page = () => {
   const { lessons } = useContext(Context);
   const searchParams = useSearchParams();
   const videoId = searchParams.get('videoId')
-  const [progress, setProgress] = useState(70); // Set the progress value
+  const [progress, setProgress] = useState(); // Set the progress value
   const router = useRouter();
   const params = useParams();
   const lessonId = params.lessonId;
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [results, setResults] = useState(null);
+  const [advice, setAdvice] = useState('');
 
   const lesson = lessons.find((lesson) => lesson.lessonId === lessonId);
 
@@ -55,6 +56,8 @@ const Page = () => {
       }
       const data = await response.json();
       setResults(data);
+      setProgress(data.performance_score);
+      setAdvice(data.advice);
       console.log(data);
     } catch (err) {
       setError(err.message);
@@ -137,10 +140,7 @@ const Page = () => {
               className="w-1/2 pl-4"
             >
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                tempor incididunt ut labore et dolore magna aliqua. Quis auctor elit sed
-                vulputate mi sit amet mauris. Pellentesque habitant morbi tristique senectus
-                et netus.
+                {advice}
               </p>
             </div>
           </div>

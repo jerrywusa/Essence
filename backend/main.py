@@ -73,7 +73,7 @@ async def analyze_audio_endpoint(lesson_id: str, video_id: str):
             "user": user,
             "total_score": overlap_score,
             "max_score": total_possible_score,
-            "performance_score": performance_score,
+            "performance_score": int(performance_score),
             "advice": advice
         }
         return JSONResponse(content=results)
