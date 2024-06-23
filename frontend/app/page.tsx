@@ -4,51 +4,46 @@ import Link from "next/link";
 import React from "react";
 import { useUser, SignInButton } from "@clerk/nextjs"; // Import the necessary hooks from Clerk
 import Image from "next/image";
-import img from "./home/wows ss.jpeg";
 import gif from "../public/ScreenRecording2024-06-22at11.06.48PM-ezgif.com-video-to-gif-converter.gif";
 import { DataType, LessonType } from "./types";
 import { useRouter } from "next/navigation";
+import imgOne from "../public/images/littleWomen.png";
+import imgTwo from "../public/images/hungerGames.png";
+import imgThree from "../public/images/wows.jpeg";
+import imgFour from "../public/images/gump.png";
 
 const lessons: Array<LessonType> = [
   {
-    image: img,
-    title: "title 1",
-    speechType: "dialogue",
+    image: imgOne,
+    title: "Little Women",
+    speechType: "monologue",
     lessonId: "id1",
-    videoLink: "http://localhost:3000/videos/ForestGump.mp4",
+    videoLink: "http://localhost:3000/videos/LittleWoman.mp4",
     videoId: "videoId1",
   },
   {
-    image: img,
-    title: "title 2",
+    image: imgTwo,
+    title: "Hunger Games",
     speechType: "monologue",
     lessonId: "id2",
-    videoLink: "http://localhost:3000/videos/ForestGump.mp4",
+    videoLink: "http://localhost:3000/videos/HungerGames.mp4",
     videoId: "videoId2",
   },
   {
-    image: img,
-    title: "title 3",
-    speechType: "monologue",
+    image: imgThree,
+    title: "Wolf of Wall Street",
+    speechType: "dialogue",
     lessonId: "id3",
-    videoLink: "http://localhost:3000/videos/ForestGump.mp4",
+    videoLink: "http://localhost:3000/videos/wows.mp4",
     videoId: "videoId3",
   },
   {
-    image: img,
-    title: "title 4",
+    image: imgFour,
+    title: "Forest Gump",
     speechType: "monologue",
     lessonId: "id4",
     videoLink: "http://localhost:3000/videos/ForestGump.mp4",
     videoId: "videoId4",
-  },
-  {
-    image: img,
-    title: "title 5",
-    speechType: "dialogue",
-    lessonId: "id5",
-    videoLink: "http://localhost:3000/videos/ForestGump.mp4",
-    videoId: "videoId5",
   },
 ];
 export const Context = React.createContext({ lessons });
