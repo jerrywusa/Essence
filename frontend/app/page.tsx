@@ -53,6 +53,13 @@ export default function Home() {
       <div>
         <Link href="/profile">go to profile page</Link>
       </div>
+<<<<<<< HEAD
     </Context.Provider>
+=======
+      <div>
+        <Link href="/record">go to record page</Link>
+      </div>
+    </>
+>>>>>>> 306bd96bda713d5d0a910a598218566a0402906c
   );
 }
