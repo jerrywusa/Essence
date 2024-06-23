@@ -33,6 +33,27 @@ app.add_middleware(
 # Hume API key
 HUME_API_KEY = os.getenv("HUME_API_KEY")
 
+def flatten_emotions(emotions):
+    flat_list = []
+    for time_range in emotions:
+        flat_list.extend(e['name'] for e in emotions[time_range])
+    return flat_list
+
+def compare_emotions(professional, user):
+    professional_flat = flatten_emotions(professional)
+    user_flat = flatten_emotions(user)
+    
+    professional_set = set(professional_flat)
+    user_set = set(user_flat)
+    
+    overlap = professional_set & user_set
+    total_emotions = professional_set | user_set
+    
+    overlap_score = len(overlap)
+    total_possible_score = len(total_emotions)
+    
+    return overlap_score, total_possible_score
+
 @app.post("/analyze-audio")
 async def analyze_audio_endpoint(video_id: str):
     try:
@@ -63,7 +84,6 @@ async def analyze_audio_endpoint(video_id: str):
             {"name": "Contemplation", "score": 15.99},
             {"name": "Calmness", "score": 12.79}
         ]}
-        # def compare_emotions(professional, user):
         total_score = 0
         max_score = 0
         
@@ -80,12 +100,15 @@ async def analyze_audio_endpoint(video_id: str):
                         elif prof_emotion in user_emotions:
                             total_score += 1
 
-        
-
-# total_score, max_score = compare_emotions(professional, user)
-        print(total_score, max_score)
-        performance_score = (total_score / max_score) * 100 if max_score > 0 else 0
-        results = {"professional" : professional, "user" : user, "total_score" : total_score, "max_score" : max_score, "performance_score" : performance_score}
+        overlap_score, total_possible_score = compare_emotions(professional, user)
+        performance_score = (overlap_score / total_possible_score) * 100 if total_possible_score > 0 else 0
+        results = {
+            "professional": professional,
+            "user": user,
+            "total_score": overlap_score,
+            "max_score": total_possible_score,
+            "performance_score": performance_score
+        }
         return JSONResponse(content=results)
     except HTTPException as e:
         return JSONResponse(status_code=e.status_code, content={"detail": e.detail})
