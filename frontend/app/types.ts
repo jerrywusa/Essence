@@ -14,5 +14,4 @@ export interface LessonType {
 
 export interface DataType {
   lessons: Array<LessonType>;
-  name: string;
 }
