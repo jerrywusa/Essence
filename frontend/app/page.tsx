@@ -12,6 +12,9 @@ export default function Home() {
       <div>
         <Link href="/profile">go to profile page</Link>
       </div>
+      <div>
+        <Link href="/record">go to record page</Link>
+      </div>
     </>
   );
 }
