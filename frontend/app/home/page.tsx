@@ -1,7 +1,10 @@
+
+
 import { FunctionComponent } from "react";
 import img from "./wows ss.jpeg";
 import Lessons from "./lessons";
 import { LessonType } from "../types";
+import { currentUser } from '@clerk/nextjs/server';
 
 interface HomeProps {}
 
@@ -38,9 +41,15 @@ const lessonArr: Array<LessonType> = [
   },
 ];
 
-const name = "Jerry";
+const Home: FunctionComponent<HomeProps> = async () => {
+  const user = await currentUser();
 
-const Home: FunctionComponent<HomeProps> = () => {
+  // Determine the greeting text
+  let greetingText = "Welcome!";
+  if (user) {
+    greetingText = `Welcome back, ${user.firstName || user.fullName || 'there'}!`;
+  }
+
   return (
     <>
       <div
@@ -54,9 +63,9 @@ const Home: FunctionComponent<HomeProps> = () => {
           fontFamily: "Arial, sans-serif",
         }}
       >
-        Welcome back, {name}!
+        {greetingText}
       </div>
-      <Lessons lessons={lessonArr} />;
+      {user && <Lessons lessons={lessonArr} />}
     </>
   );
 };
