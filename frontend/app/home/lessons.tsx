@@ -15,7 +15,7 @@ const Lessons: FunctionComponent<LessonsProps> = ({ lessons }) => {
         flexWrap: "wrap",
         justifyContent: "flex-start",
         gap: "25px",
-        paddingLeft: "25px",
+        paddingLeft: "70px",
       }}
     >
       {lessons.map((lesson) => (

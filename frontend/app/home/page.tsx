@@ -54,7 +54,7 @@ const Home: FunctionComponent<HomeProps> = async () => {
     <>
       <div
         style={{
-          paddingLeft: "25px",
+          paddingLeft: "70px",
           paddingBottom: "50px",
           paddingTop: "30px",
           fontSize: "56px",
