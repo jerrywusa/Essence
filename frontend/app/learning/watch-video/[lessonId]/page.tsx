@@ -60,6 +60,7 @@ const WatchVideo: FunctionComponent<WatchVideoProps> = ({ params }) => {
               fontSize: "32px",
               fontWeight: "bold",
               fontFamily: "Arial, sans-serif",
+              marginLeft: "35px",
             }}
           >
             {lesson.title}
@@ -70,7 +71,7 @@ const WatchVideo: FunctionComponent<WatchVideoProps> = ({ params }) => {
               position: "relative",
               left: "50px",
               color: "white",
-              opacity: ".5",
+              opacity: ".7",
               marginLeft: "180px",
             }}
             onClick={() => replayVideo()}
@@ -82,7 +83,6 @@ const WatchVideo: FunctionComponent<WatchVideoProps> = ({ params }) => {
             style={{
               position: "relative",
               color: "white",
-              opacity: ".5",
               marginLeft: "70px",
             }}
           >
