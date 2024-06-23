@@ -7,8 +7,9 @@ interface WatchVideoProps {
 }
 
 const WatchVideo: FunctionComponent<WatchVideoProps> = ({ params }) => {
-  // return <div style={{ color: "green" }}>My Post: {params.lessonId}</div>;
-  return <div style={{ color: "red" }}>hello world</div>;
+  return (
+    <div style={{ color: "white" }}>My Post: {params.lessonId ?? "no id"}</div>
+  );
 };
 
 export default WatchVideo;

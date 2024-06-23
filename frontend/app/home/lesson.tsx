@@ -29,7 +29,7 @@ const Lesson: FunctionComponent<LessonProps> = ({ lesson }) => {
         border: "1px solid orange",
         zIndex: "100",
       }}
-      onClick={() => router.push(`/watch-video/${lesson.lessonId}`)}
+      onClick={() => router.push(`/learning/watch-video/${lesson.lessonId}`)}
     >
       <Image src={lesson.image} alt="image description" style={imageStyle} />
       <div
