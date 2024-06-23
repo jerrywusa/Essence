@@ -88,7 +88,7 @@ const VideoRecorder = () => {
   };
 
   return (
-    <div style={{ backgroundColor: '#1B1B1B' }} className="p-8 rounded-lg">
+    <div style={{ backgroundColor: '#1B1B1B', height: '658px'  }} className="p-8 rounded-lg">
       <video ref={videoRef} autoPlay muted className="w-full h-auto rounded-lg"></video>
       <canvas ref={canvasRef} style={{ display: 'none' }}></canvas>
       <div className="flex justify-center mt-4">
