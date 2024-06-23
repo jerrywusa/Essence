@@ -24,8 +24,8 @@ const Lesson: FunctionComponent<LessonProps> = ({ lesson }) => {
     <div
       style={{
         position: "relative",
-        width: "444px",
-        height: "340.36px",
+        width: "415px",
+        height: "340px",
       }}
       onClick={() => router.push(`/learning/watch-video/${lesson.lessonId}`)}
     >

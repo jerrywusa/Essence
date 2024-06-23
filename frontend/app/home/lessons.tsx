@@ -1,13 +1,14 @@
-import { FunctionComponent, useId } from "react";
+"use client";
+
+import { Context } from "@/app/page";
+import { FunctionComponent, useContext } from "react";
 import Lesson from "./lesson";
-import { LessonType } from "../types";
-import { uid } from "uid";
 
-interface LessonsProps {
-  lessons: Array<LessonType>;
-}
+interface LessonsProps {}
 
-const Lessons: FunctionComponent<LessonsProps> = ({ lessons }) => {
+const Lessons: FunctionComponent<LessonsProps> = () => {
+  const { lessons } = useContext(Context);
+
   return (
     <div
       style={{
@@ -15,7 +16,7 @@ const Lessons: FunctionComponent<LessonsProps> = ({ lessons }) => {
         flexWrap: "wrap",
         justifyContent: "flex-start",
         gap: "25px",
-        paddingLeft: "25px",
+        paddingLeft: "70px",
       }}
     >
       {lessons.map((lesson) => (
