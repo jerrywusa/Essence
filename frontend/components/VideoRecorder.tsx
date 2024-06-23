@@ -3,7 +3,11 @@ import { storage } from '../lib/firebase/firebaseConfig.d'; // Adjust path as ne
 import { ref as storageRef, uploadBytes } from 'firebase/storage';
 import { useUser } from '@clerk/nextjs';
 
-const VideoRecorder = () => {
+interface VideoRecorderProps {
+  onVideoUpload?: (videoId: string) => void;
+}
+
+const VideoRecorder: React.FC<VideoRecorderProps> = ({ onVideoUpload }) => {
   const [isRecording, setIsRecording] = useState(false);
   const [mediaRecorder, setMediaRecorder] = useState<MediaRecorder | null>(null);
   const [recordingTimestamp, setRecordingTimestamp] = useState('');
@@ -36,10 +40,13 @@ const VideoRecorder = () => {
           setRecordingTimestamp(timestamp);
           captureThumbnail(timestamp);
           await uploadVideo(videoBlob, timestamp);
+          if (onVideoUpload) {
+            onVideoUpload(timestamp);
+          }
         };
       })
       .catch(console.error);
-  }, [user]);
+  }, [user, onVideoUpload]);
 
   const handleToggleRecording = () => {
     if (isRecording) {
@@ -92,25 +99,22 @@ const VideoRecorder = () => {
       <video ref={videoRef} autoPlay muted className="w-full h-auto rounded-lg"></video>
       <canvas ref={canvasRef} style={{ display: 'none' }}></canvas>
       <div className="flex justify-center mt-4">
-      <button
-        onClick={handleToggleRecording}
-        className="p-4 rounded-full focus:outline-none"
-      >
-        {isRecording ? (
-          <svg width="72" height="72" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="36" cy="36" r="35" stroke="#F2F2F2" stroke-width="2"/>
-          <rect x="22" y="23" width="27" height="27" rx="1" fill="#D73939"/>
-          </svg>
-          
-        ) : (
-          <svg width="72" height="72" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
-<circle cx="36" cy="36" r="27" fill="#D73939"/>
-<circle cx="36" cy="36" r="35" stroke="#D73939" stroke-width="2"/>
-</svg>
-
-
-        )}
-      </button>
+        <button
+          onClick={handleToggleRecording}
+          className="p-4 rounded-full focus:outline-none"
+        >
+          {isRecording ? (
+            <svg width="72" height="72" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="36" cy="36" r="35" stroke="#F2F2F2" strokeWidth="2"/>
+              <rect x="22" y="23" width="27" height="27" rx="1" fill="#D73939"/>
+            </svg>
+          ) : (
+            <svg width="72" height="72" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="36" cy="36" r="27" fill="#D73939"/>
+              <circle cx="36" cy="36" r="35" stroke="#D73939" strokeWidth="2"/>
+            </svg>
+          )}
+        </button>
       </div>
     </div>
   );
