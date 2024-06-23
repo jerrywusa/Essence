@@ -11,6 +11,10 @@ import imgOne from "../public/images/littleWomen.png";
 import imgTwo from "../public/images/hungerGames.png";
 import imgThree from "../public/images/wows.jpeg";
 import imgFour from "../public/images/gump.png";
+import LittleWoman from '../components/scripts/LittleWoman';
+import HungerGames from '../components/scripts/HungerGames';
+import Wows from '../components/scripts/Wows';
+import ForestGump from '../components/scripts/ForestGump';
 
 const lessons: Array<LessonType> = [
   {
@@ -20,6 +24,7 @@ const lessons: Array<LessonType> = [
     lessonId: "id1",
     videoLink: "http://localhost:3000/videos/LittleWoman.mp4",
     videoId: "videoId1",
+    scriptComponent: LittleWoman,
   },
   {
     image: imgTwo,
@@ -28,6 +33,7 @@ const lessons: Array<LessonType> = [
     lessonId: "id2",
     videoLink: "http://localhost:3000/videos/HungerGames.mp4",
     videoId: "videoId2",
+    scriptComponent: HungerGames,
   },
   {
     image: imgThree,
@@ -36,6 +42,7 @@ const lessons: Array<LessonType> = [
     lessonId: "id3",
     videoLink: "http://localhost:3000/videos/wows.mp4",
     videoId: "videoId3",
+    scriptComponent: Wows,
   },
   {
     image: imgFour,
@@ -44,6 +51,7 @@ const lessons: Array<LessonType> = [
     lessonId: "id4",
     videoLink: "http://localhost:3000/videos/ForestGump.mp4",
     videoId: "videoId4",
+    scriptComponent: ForestGump,
   },
 ];
 

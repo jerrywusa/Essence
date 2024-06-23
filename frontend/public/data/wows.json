@@ -1,0 +1,91 @@
+{
+    "emotions": {
+        "(1.8, 2.6)": [
+            {
+                "name": "Calmness",
+                "score": 17.5
+            },
+            {
+                "name": "Contentment",
+                "score": 9.57
+            },
+            {
+                "name": "Boredom",
+                "score": 9.21
+            }
+        ],
+        "(3.3, 4.5)": [
+            {
+                "name": "Excitement",
+                "score": 20.02
+            },
+            {
+                "name": "Boredom",
+                "score": 13.9
+            },
+            {
+                "name": "Contentment",
+                "score": 12.46
+            }
+        ],
+        "(4.8, 9.5)": [
+            {
+                "name": "Concentration",
+                "score": 77.79
+            },
+            {
+                "name": "Determination",
+                "score": 65.71
+            },
+            {
+                "name": "Contemplation",
+                "score": 58.81
+            }
+        ],
+        "(9.4, 10.0)": [
+            {
+                "name": "Determination",
+                "score": 19.45
+            },
+            {
+                "name": "Calmness",
+                "score": 18.4
+            },
+            {
+                "name": "Concentration",
+                "score": 13.17
+            }
+        ],
+        "(14.0, 17.8)": [
+            {
+                "name": "Calmness",
+                "score": 56.62
+            },
+            {
+                "name": "Relief",
+                "score": 41.34
+            },
+            {
+                "name": "Desire",
+                "score": 16.45
+            }
+        ],
+        "(25.6, 27.7)": [
+            {
+                "name": "Concentration",
+                "score": 20.52
+            },
+            {
+                "name": "Contemplation",
+                "score": 17.86
+            },
+            {
+                "name": "Calmness",
+                "score": 15.77
+            }
+        ]
+    },
+    "script": "DONNIE AZOFF: Right, that's incredible, sir. Can't tell you how excited I am. MARK HANNA: You should be. There's two keys to success in the broker business. First of all, you got to stay relaxed. MARK HANNA: Yeah, you jerk off? DONNIE AZOFF: Do I? Do I jerk off? MARK HANNA: Yeah, yeah, I jerk off. MARK HANNA: How many times a week? DONNIE AZOFF: Like, um, three, three or four times, maybe. MARK HANNA: Pump those numbers up. Those are rookie numbers in this racket. By myself, I jerk off at least twice a day. MARK HANNA: Wow. Once in the morning, right after..."
+
+}
+

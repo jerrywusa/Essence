@@ -15,15 +15,18 @@ const Page = () => {
   const { lessons } = useContext(Context);
   const searchParams = useSearchParams();
   const videoId = searchParams.get('videoId')
-
-  const [lastVideoId, setLastVideoId] = useState<string | null>(null);
-  const [progress, setProgress] = useState(70); // Set the progress value
+  const [progress, setProgress] = useState(); // Set the progress value
   const router = useRouter();
   const params = useParams();
   const lessonId = params.lessonId;
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [results, setResults] = useState(null);
+  const [advice, setAdvice] = useState('');
 
   const lesson = lessons.find((lesson) => lesson.lessonId === lessonId);
 
+  
   const [videoUrl, setVideoUrl] = useState<string>('');
 
   useEffect(() => {
@@ -38,6 +41,36 @@ const Page = () => {
 
     fetchUrl();
   }, [`/videos/${videoId}.mp4`]);
+
+  const fetchData = async () => {
+    try {
+      const response = await fetch(`http://localhost:8000/analyze-audio?lesson_id=${lessonId}&video_id=${videoId}.mp4`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        }
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      const data = await response.json();
+      setResults(data);
+      setProgress(data.performance_score);
+      setAdvice(data.advice);
+      console.log(data);
+    } catch (err) {
+      setError(err.message);
+    }
+  };
+  
+  if (loading) {
+    console.log(videoId);
+    console.log("fetching");
+    setLoading(false);
+    fetchData();
+    console.log("hefsaleoeo");
+  }
 
   if (!videoUrl) {
     return <div>Loading...</div>;
@@ -107,10 +140,7 @@ const Page = () => {
               className="w-1/2 pl-4"
             >
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                tempor incididunt ut labore et dolore magna aliqua. Quis auctor elit sed
-                vulputate mi sit amet mauris. Pellentesque habitant morbi tristique senectus
-                et netus.
+                {advice}
               </p>
             </div>
           </div>
