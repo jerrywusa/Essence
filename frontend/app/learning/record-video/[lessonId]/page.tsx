@@ -1,9 +1,6 @@
 "use client";
-
-import { useEffect, useState } from 'react';
 import dynamic from 'next/dynamic';
 import { ClerkProvider, useUser } from '@clerk/nextjs';
-import Head from 'next/head';
 
 const VideoRecorder = dynamic(() => import('../../../../components/VideoRecorder'), {
   ssr: false
